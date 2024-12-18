@@ -1,0 +1,8 @@
+<div class="container">
+    <div *ngIf="monthNames.length > 0">
+        <div class="content" *ngFor="let month of monthNames; let i = index">
+            <h2>Calendrier des agents du mois de  {{ month }}</h2>
+            <app-calendar [config]="monthConfigs[i]"[events]="monthEvents[i]"></app-calendar>
+          </div>
+      </div>
+</div> 

@@ -1,0 +1,136 @@
+openapi: 3.0.3
+info:
+  title: La CRA des agents
+  description: |-
+    URLS des ressources pour créer, mettre à jour ou supprimer les CRAs des agents
+
+  version: 1.0.11
+
+tags:
+  - name: CRAs des agents 
+    description: Tous les CRAS des agents renseignés dans le localstorage
+paths:
+  /SauvegarderCRAdesAgents:
+    post:
+      tags:
+        - cra
+      summary: Ajoute un nouveau CRA à un agent
+      description: Ajoute un nouveau CRA avec pour un idAgent, une liste de mission avec chaque mission étant associée à une date
+      operationId: saveCRA
+      requestBody:
+        description: Créer un nouveau CRA
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CRA'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/CRA'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CRA'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CRA'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/CRA'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+  /cra/findByUserAndMonth:
+    get:
+      tags:
+        - cra
+      summary: Trouve les CRAs par mois et utilisateur
+      description: Multiple status values can be provided with comma separated strings
+      operationId: findByUserAndMonth
+      parameters:
+        - name: idAgent
+          in: query
+          description: Identification de l'agent
+          required: true
+          explode: true
+          schema:
+            type: string
+        - name: months
+          in: query
+          description: Mois au cours duquels on souhaite avoir les CRAs
+          required: false
+          explode: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CRA'          
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CRA'
+        '400':
+          description: Invalid status value
+
+components:
+  schemas:
+    CRA:
+      required:
+        - idAgent
+        - listeMissionTravaillees
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        idAgent:
+          type: string
+          example: Agent_777
+        listeMissionTravaillees:
+          type: object
+          $ref: '#/components/schemas/listeMissionTravaillees'
+      xml:
+        name: cra
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+      xml:
+        name: '##default'
+    listeMissionTravaillees:
+      type: object
+      properties:
+        items:
+          type: object
+          additionalProperties: 
+            type: array
+            items:
+              type: string
+              format: date
+              example: "2024-12-11"
+      example:
+            "Opération Cobra":
+              - "2024-12-01"
+              - "2024-12-05"
+            "Mission Phoenix":
+              - "2024-11-15"
+              - "2024-11-20"
+                

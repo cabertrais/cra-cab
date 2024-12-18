@@ -1,0 +1,35 @@
+/* Conteneur principal */
+.container {
+  margin: 40px auto; /* Ajoute de l'espace autour du calendrier */
+  max-width: 1500px; /* Largeur maximale */
+  background-color: #f9f9f9; /* Fond clair */
+  border: 1px solid #ddd; /* Bordure légère */
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%); /* Ombre douce */
+  padding: 20px; /* Espacement interne */
+}
+  
+/* Espacement entre les éléments */
+.content {
+  margin-top: 20px; /* Ajoute de l'espace en haut */
+  padding: 20px; /* Espacement interne pour le calendrier */
+  background-color: white; /* Fond blanc pour le calendrier */
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 2px 6px rgb(0 0 0 / 10%); /* Ombre douce */
+}
+  
+/* Style pour l'app-calendar si nécessaire */
+app-calendar {
+  display: block; /* Force l'élément à prendre toute la largeur */
+  width: 100%;
+  min-height: 500px; /* Hauteur minimale */
+  font-family: Arial, sans-serif; /* Police propre et moderne */
+}
+  
+/* Améliore l'apparence générale du texte */
+h2, h3 {
+  color: #333; /* Couleur sombre pour les titres */
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}

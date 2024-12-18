@@ -1,0 +1,13 @@
+<div class="tabs-container">
+    <mat-tab-group (selectedIndexChange)="onTabChange($event)">
+      <!-- Onglet CRA -->
+      <mat-tab label="CRA" data-testid="cra">
+      </mat-tab>
+  
+      <!-- Onglet Commandement -->
+      <mat-tab label="Commandement" data-testid="commandement">
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <!-- Contenu dynamique selon la route -->
+<router-outlet></router-outlet>

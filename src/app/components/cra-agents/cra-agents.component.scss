@@ -1,0 +1,237 @@
+.error-message {
+  color: #f44336;
+
+  /* Rouge vif pour signaler une erreur */
+  background-color: #fdecea;
+
+  /* Rouge clair en arrière-plan */
+  border: 1px solid #f44336;
+
+  /* Bordure rouge */
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+}
+
+
+/* Formulaire */
+.form-and-buttons {
+  display: flex; /* Aligne les éléments horizontalement */
+  justify-content: space-between; /* Espacement entre le formulaire à gauche et les boutons à droite */
+  align-items: center; /* Aligne verticalement le formulaire et les boutons */
+  width: 100%; /* Assure que le conteneur prend toute la largeur disponible */
+  margin-bottom: 20px; /* Espace sous le conteneur */
+}
+
+.formulaire {
+  flex: 1; /* Le formulaire prend l'espace disponible */
+  max-width: 400px; /* Largeur maximale du formulaire */
+}
+
+.button-container {
+  display: flex; /* Aligne les boutons horizontalement */
+  gap: 20px; /* Espacement entre les boutons */
+  align-items: center; 
+  justify-content: flex-end; /* Aligne les boutons à droite */
+}
+
+button {
+  padding: 12px 24px; /* Augmente la taille des boutons */
+  font-size: 16px; /* Texte plus lisible */
+  font-weight: bold; /* Texte en gras */
+  border-radius: 5px; /* Coins arrondis */
+  border: none; /* Pas de bordure */
+  color: white; /* Texte en blanc */
+  cursor: pointer; /* Curseur interactif */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; /* Animation au survol */
+  background-color: #4caf50;
+}
+
+.cra-button{
+  align-items: center;
+}
+
+button:disabled {
+  background-color: #ccc; /* Gris clair pour les boutons désactivés */
+  cursor: not-allowed; /* Curseur non interactif */
+}
+
+/* Assurez-vous que les éléments sont alignés correctement */
+.mat-form-field {
+  width: 100%;
+}
+
+.submit-button {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/* Ajustement global de la grille */
+.calendar-week {
+  margin-left: 300px;
+  margin-top: 20px;
+  max-width: 90%;
+  align-items: right;
+}
+
+/* Mat-grid-tile : Réduit la taille des tuiles et ajoute des bordures */
+.mat-grid-tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+
+  /* Bordure grise autour de chaque tuile */
+  padding: 5px;
+
+  /* Espace intérieur pour éviter que le contenu soit trop collé */
+  height: 80px;
+
+  /* Hauteur réduite pour les tuiles */
+  width: 100%;
+
+  /* Assure qu'elles s'adaptent à la largeur disponible */
+  max-width: 100%;
+
+  /* Empêche de dépasser */
+  box-sizing: border-box;
+
+  /* Assure que padding et bordure sont inclus dans la taille */
+}
+
+/* Contenu de la tuile : Reduit la taille et gère le texte */
+.mat-grid-tile .mat-grid-tile-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+
+  /* Enlève tout le padding par défaut */
+  font-size: 14px;
+
+  /* Taille de texte réduite */
+}
+
+/* Entête : Jours de la semaine */
+
+/* Entête : Jours de la semaine */
+.day-header {
+  background-color: #3f51b5;
+  color: white;
+  font-size: 10px;
+
+  /* Taille de texte réduite pour l'entête */
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 2px;
+
+  /* Ajoute un léger espace entre les entêtes */
+  height: 10px;
+
+  /* Hauteur réduite pour les tuiles d'en-tête */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenu de la case : Cochez la case avec un petit texte */
+.day-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  text-align: center;
+}
+
+mat-checkbox {
+  margin-left: 10px;
+}
+
+.day-content mat-checkbox {
+  font-size: 12px;
+
+  /* Réduit la taille de la police de la checkbox */
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+/* Bordures et espacements dans les cases de contenu */
+.mat-grid-tile:not(.day-header) {
+  border: 1px solid #ddd;
+
+  /* Bordure légère pour les cases de contenu */
+  margin: 2px;
+
+  /* Un petit espace entre les cases */
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+mat-header-cell,
+mat-cell {
+  padding: 10px;
+}
+
+mat-header-cell {
+  font-weight: bold;
+}
+
+mat-row {
+  border-bottom: 1px solid #ddd;
+}
+
+mat-grid-list {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Conteneur principal */
+.container {
+  margin: 40px auto; /* Ajoute de l'espace autour du calendrier */
+  max-width: 1500px; /* Largeur maximale */
+  background-color: #f9f9f9; /* Fond clair */
+  border: 1px solid #ddd; /* Bordure légère */
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%); /* Ombre douce */
+  padding: 20px; /* Espacement interne */
+}
+
+/* Espacement entre les éléments */
+.content {
+  margin-top: 20px; /* Ajoute de l'espace en haut */
+  padding: 20px; /* Espacement interne pour le calendrier */
+  background-color: white; /* Fond blanc pour le calendrier */
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 2px 6px rgb(0 0 0 / 10%); /* Ombre douce */
+}
+
+/* Style pour l'app-calendar si nécessaire */
+app-calendar {
+  display: block; /* Force l'élément à prendre toute la largeur */
+  width: 100%;
+  min-height: 500px; /* Hauteur minimale */
+  font-family: Arial, sans-serif; /* Police propre et moderne */
+}
+
+/* Améliore l'apparence générale du texte */
+h2, h3 {
+  color: #333; /* Couleur sombre pour les titres */
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}

@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="form-and-buttons">
+    <form (ngSubmit)="onSubmit()" class="formulaire">
+      <mat-form-field appearance="fill">
+        <mat-label>Qui suis-je</mat-label>
+        <mat-select [(ngModel)]="selectedAgent" name="agent" required>
+          <mat-option [value]="null">Sélectionner</mat-option>
+          <mat-option *ngFor="let agent of craStore.agents()" [value]="agent.nomAgent">
+            {{ agent.nomAgent }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class=".cra-button">
+      <button type="submit" [disabled]="!selectedAgent">Mettre à jour le CRA</button>
+      <button type="button" [disabled]="!selectedAgent" (click)="showCurrentMonthCra()">
+        Afficher le mois en cours
+      </button>
+    </div>
+    </form>
+  </div>
+
+  <!-- Section Ajout CRA -->
+  <div *ngIf="craStore.afficherAjoutCra()" class="grid-section">
+    <mat-paginator [length]="totalWeeks" [pageSize]="1" [pageSizeOptions]="[1]" (page)="onPageChange($event)">
+    </mat-paginator>
+    <table mat-table [dataSource]="missions" class="mat-elevation-z8">
+      <ng-container matColumnDef="mission">
+        <th mat-header-cell *matHeaderCellDef>Missions</th>
+        <td mat-cell *matCellDef="let mission">{{ mission.libelle }}</td>
+      </ng-container>
+
+      <ng-container *ngFor="let day of weekDays">
+        <ng-container matColumnDef="{{ day.id }}">
+          <th mat-header-cell *matHeaderCellDef>{{ day.label }}</th>
+          <td mat-cell *matCellDef="let mission">
+          <mat-checkbox [(ngModel)]="checkedDays[mission.num + '-' + day.id]" 
+                    (change)="toggleCheckbox(mission.num, day.id)">
+          </mat-checkbox>
+          </td>
+        </ng-container>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+    </table>
+    <div *ngIf="craStore.errorMessage?.() as errorMessage" class="error-message">
+      <span class="material-icons" style="vertical-align: middle; margin-right: 5px;">error</span>
+      {{ craStore.errorMessage() }}
+    </div>
+    <div *ngIf="craStore.saveMessage?.() as saveMessage" class="save-section">
+      <span class="save-message">{{ craStore.saveMessage() }}</span>
+    </div>
+  </div>
+
+  <!-- Section Calendrier -->
+  <div *ngIf="craStore.afficherCraMois()" class="grid-section">
+    <div *ngIf="craStore.events() && craStore.events().length > 0">
+      <div class="content">
+        <h2>Calendrier de l'agent {{ craStore.nomAgent() }}</h2>
+        <app-calendar [events]="craStore.events()"></app-calendar>
+      </div>
+    </div>
+  </div>
+</div>
