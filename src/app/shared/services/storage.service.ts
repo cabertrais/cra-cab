@@ -87,13 +87,6 @@ export class StorageService {
     }
 
     /**
-     * Supprime les données CRA du localStorage.
-     */
-    deleteCra(): void {
-        localStorage.removeItem(STORAGE_KEY);
-    }
-
-    /**
       * Ajoute des dates à une mission dans un CRA spécifique.
       * @param idAgent Identifiant de l'agent.
       * @param missionId Identifiant de la mission.

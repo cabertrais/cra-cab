@@ -5,6 +5,8 @@ import { DataService } from '../../shared/services/data.service';
 import { StorageService } from '../../shared/services/storage.service';
 import { DayPilotModule } from '@daypilot/daypilot-lite-angular';
 import { Mission } from '../../shared/model/mission.model';
+import { CraAgentsStore } from '../../shared/cra-agents.store';
+import { signal } from '@angular/core';
 
 
 describe('CraAgentsComponent', () => {
@@ -28,6 +30,24 @@ describe('CraAgentsComponent', () => {
           addMissionDates: jest.fn(),
           removeMissionDates: jest.fn(),
           initializeCra: jest.fn(),
+        })
+        .provide({
+          provide: CraAgentsStore,
+          useValue: {
+            selectedAgent: signal('Agent-001'), 
+            weekDays: signal(['Lundi', 'Mardi', 'Mercredi']), 
+            initializeStore: jest.fn(),
+            updateWeekDays: jest.fn(),
+            agents: signal([]),
+            missions: signal([]),
+            checkedDays: signal({}),
+            afficherAjoutCra: signal(false),
+            afficherCraMois: signal(false),
+            saveMessage: signal(""),
+            errorMessage: signal(""),
+            events: signal([]),
+            nomAgent: signal("James Bond")
+          },
         })
         .keep(DayPilotModule)
       .build();
